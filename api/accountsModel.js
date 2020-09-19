@@ -8,11 +8,10 @@ const getById = (id) => {
 	return db('accounts').where({ id }).first();
 };
 
-const insert = (account) => {
-	return db('accounts')
-		.insert(account)
-		.then((id) => getById(id));
-};
+async function insert(account) {
+	const id = await db('accounts').insert(account, 'id');
+	return await getById(id[0]);
+}
 
 const update = (id, changes) => {
 	return db('accounts').where({ id }).update(changes);

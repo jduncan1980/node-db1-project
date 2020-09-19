@@ -6,11 +6,26 @@ module.exports = {
 		connection: {
 			filename: './data/budget.db3',
 		},
+		useNullAsDefault: true,
+		migrations: {
+			directory: './data/migrations',
+			tableName: 'knex_migrations',
+		},
+		seeds: {
+			directory: './data/seeds',
+		},
 	},
 
 	production: {
 		client: 'postgresql',
 		connection: 'postgresql://localhost/accounts',
+	},
+	migrations: {
+		directory: './data/migrations',
+		tableName: 'knex_migrations',
+	},
+	seeds: {
+		directory: './data/seeds',
 	},
 };
 
